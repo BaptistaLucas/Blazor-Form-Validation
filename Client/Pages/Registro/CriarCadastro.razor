@@ -1,0 +1,84 @@
+@page "/cadastro/criar"
+
+<h3> Criar Cadastro</h3>
+<EditForm Model="cadastro" OnValidSubmit="Create">
+    <DataAnnotationsValidator/>
+    <div class="form-row">
+                <div class="form-group col">
+                    <label>Titulo</label>
+                    <InputSelect @bind-Value="cadastro.Titulo" class="form-control">
+                        <option value=""></option>
+                        <option value="Sr">Sr</option>
+                        <option value="Sra">Sra</option>
+                    </InputSelect>
+                    <ValidationMessage For="@(() => cadastro.Titulo)" />
+                </div>
+                <div class="form-group col-5">
+                    <label>Nome</label>
+                    <InputText @bind-Value="cadastro.Nome" class="form-control" />
+                    <ValidationMessage For="@(() => cadastro.Nome)" />
+                </div>
+                <div class="form-group col-5">
+                    <label>Sobrenome</label>
+                    <InputText @bind-Value="cadastro.Sobrenome" class="form-control" />
+                    <ValidationMessage For="@(() => cadastro.Sobrenome)" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Data de nascimento</label>
+                    <InputDate @bind-Value="cadastro.DataDeNascimento" class="form-control" />
+                    <ValidationMessage For="@(() => cadastro.DataDeNascimento)" />
+                </div>
+                <div class="form-group col">
+                    <label>Email</label>
+                    <InputText @bind-Value="cadastro.Email" class="form-control" />
+                    <ValidationMessage For="@(() => cadastro.Email)" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Senha</label>
+                    <InputText @bind-Value="cadastro.Senha" type="password" class="form-control" />
+                    <ValidationMessage For="@(() => cadastro.Senha)" />
+                </div>
+                <div class="form-group col">
+                    <label>Confirmar Senha</label>
+                    <InputText @bind-Value="cadastro.ConfirmarSenha" type="password" class="form-control" />
+                    <ValidationMessage For="@(() => cadastro.ConfirmarSenha)" />
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <InputCheckbox @bind-Value="cadastro.Termos" id="acceptTerms" class="form-check-input" />
+                <label for="acceptTerms" class="form-check-label">Aceitar Termos & Condiçoes</label>
+                <ValidationMessage For="@(() => cadastro.Termos)" />
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success mr-1">Concluir</button>
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+            </div>
+    
+</EditForm>
+
+
+
+@code {
+
+      Cadastro cadastro = new Cadastro();
+
+
+
+    public void Create()
+    {
+        Console.WriteLine(cadastro.Titulo);
+        Console.WriteLine(cadastro.Nome);
+        Console.WriteLine(cadastro.Sobrenome);
+        Console.WriteLine(cadastro.DataDeNascimento);
+        Console.WriteLine(cadastro.Email);
+        Console.WriteLine(cadastro.Senha);
+        Console.WriteLine(cadastro.ConfirmarSenha);
+        
+    }
+
+}
+
